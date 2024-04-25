@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Outfit", sans-serif;
+}
+
+body{
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    background: #0f0c29;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #0d0289, #0a0349);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243e, #0e0570, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+}
+main{
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 480px;
+    display: grid;
+    gap: 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+button{
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+h1 { 
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    background-image: linear-gradient(
+        90deg,
+        hsl(0deg 0% 0%) 7%,
+        /* hsl(344deg 0% 16%) 61%, */
+        hsl(344deg 0% 31%) 78%,
+        /* hsl(344deg 0% 47%) 88%, */
+        /* hsl(344deg 0% 64%) 95%, */
+        /* hsl(0, 0%, 56%) 99%, */
+        hsl(0, 0%, 29%) 100%
+      );
+      -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    background-clip: text;  
+      color: transparent;  
+    
+}
+
+.controls{
+    display: grid;
+    gap: 20px;
+    position: relative;
+}
+
+.control{
+    display: flex;
+    background: #e8e8e8;
+    box-shadow: 2px 2px 4px rgba(45, 45, 45, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.control button{
+ --image: url(https://placehold.co/30/teal/white?text=$);
+ font-weight: 600;
+ background: transparent;
+ margin-left: 20px;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+}
+
+.control button::before{
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background: teal var(--image) center no-repeat;
+}
+
+.control button::after{
+    font-family: 'Material Symbols Outlined';
+    font-size: 1.5rem;
+    content: '\e5cf';
+}
+
+.control button:hover{
+    color: white ;
+}
+
+.control input{
+    font-size: 2.5rem;
+    text-align: end;
+    background: transparent;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+}
+
+.control input::-webkit-inner-spin-button,
+.control input::-webkit-outer-spin-button{
+    appearance: none;
+}
+
+.swap-btn{
+width: 45px;
+height: 45px;
+border-radius: 50%;
+background: white;
+color: #000;
+line-height: 1;
+box-shadow: 2px 2px 4px rgba(45, 45, 45, 0.2);
+position: absolute;
+top: 50%;
+inset-inline-start: 50%;
+transform: translate(-50%, -50%);
+transition: 0.3s;
+}
+
+.swap-btn:hover{
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+background: #fffefe;
+}
+
+.swap-btn span{
+    rotate: 90deg;
+    transition: inherit;
+}
+
+.swap-btn:hover span{
+    rotate: 270deg;
+}
+
+.exchange-rate{
+    text-align: center;
+}
+
+.exchange-rate h5{
+    text-transform: uppercase;
+    font-size: large;
+}
+
+.exchange-rate span{
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.exchange-rayte span:empty{
+    min-width: 120px;
+    min-height: 1.5rem;
+}
+
+.drawer{
+    position: absolute;
+    inset: 0;
+    background-color: white;
+    padding: 20px;
+    display: grid;
+    align-content: start;
+    gap: 20px;
+    transform: translateY(100%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer.show{
+    transform: none;
+}
+
+.title{
+    text-align: center;
+    position: relative;
+}
+
+.title button{
+    position: absolute;
+    top: 50%;
+    inset-inline-start: 0;
+    transform: translateY(-50%);
+    background: transparent;
+    opacity: 0.5;
+}
+
+.title button:hover{
+    opacity: 1;
+}
+
+.search input{
+    width: 100%;
+    font-size: 1rem;
+    padding:  10px 20px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    outline-color: blue;
+    /* here  we hae to update the color to one thats more interesting and cute */
+}
+
+.currency-list{
+    list-style-type: none;
+    overflow-y: auto;
+}
+
+.currency-list li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding-block: 5px;
+}
+
+.currency-list li:first-child{
+    padding-block-start: 0;
+}
+
+/* disable click events for non list items */
+.currency-list *:not(li){
+    pointer-events: none;
+}
+
+.skeleton{
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton::after{
+    position: absolute;
+    inset:  0;
+    z-index: 5;
+    border-radius: 0.25rem;
+    content: '';
+    animation: loading 1s linear infinite alternate;
+
+
+     /* Glass effect */
+     background: rgba(255, 255, 255, 0.2); /* Light translucent background */
+     backdrop-filter: blur(5px); /* Blur the content behind the element */
+     -webkit-backdrop-filter: blur(5px); /* For WebKit-based browsers */
+
+     transition: background-color 2s ease-in-out, height 2s ease-in-out; /* Slower and smoother transitions */
+     /* height: 0; */
+     /* Animation */
+    /* animation: loading 2s linear infinite alternate, openToBottom 2s ease forwards; */
+}
+
+@keyframes loading { 
+    from{
+        background-color: rgba(255, 255, 255, 0.1); /* Slightly less translucent */
+    } 
+    to {
+        background-color: rgba(255, 255, 255, 0.3); /* Slightly more translucent */
+    }
+}
